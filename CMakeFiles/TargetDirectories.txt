@@ -1,0 +1,3 @@
+/home/sergi/webcam_point_features/CMakeFiles/rebuild_cache.dir
+/home/sergi/webcam_point_features/CMakeFiles/edit_cache.dir
+/home/sergi/webcam_point_features/CMakeFiles/point_features.dir

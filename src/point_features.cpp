@@ -1,4 +1,3 @@
-
 //OpenCV 
 #include "opencv2/opencv.hpp"
 #include "opencv2/core.hpp"
@@ -9,7 +8,13 @@
 #include <cstdlib>
 #include <vector>
 
-//consts
+
+// OpenCV Image Objects and ROI
+
+	cv::Mat camSubimage;
+	cv::Rect roi;
+
+//Constants
 const unsigned int MIN_NUM_FEATURES = 300; //minimum number of point fetaures
 
 int main(int argc, char *argv[]) 
@@ -55,19 +60,24 @@ int main(int argc, char *argv[])
 		{
             std::cout << "No image" << std::endl;
             cv::waitKey();
-        }
-        		
-    //**************** Find ORB point fetaures and descriptors ****************************
+}
+
+     //* Create a ROI (region of interest) inside the original image */
+    roi = cv::Rect(0, 0, image.cols/2, image.rows/2);
+    camSubimage = image(roi);
+
+                
+//**************** Find ORB point fetaures and descriptors ****************************
         
         //clear previous points
         point_set.clear(); 
         
         //detect and compute(extract) features
-        orb_detector->detectAndCompute(image, cv::noArray(), point_set, descriptor_set);
+        orb_detector->detectAndCompute(camSubimage, cv::noArray(), point_set, descriptor_set);
         
         //draw points on the image
-        cv::drawKeypoints( image, point_set, image, 255, cv::DrawMatchesFlags::DEFAULT );      
-                
+        cv::drawKeypoints(camSubimage, point_set, camSubimage, 255, cv::DrawMatchesFlags::DEFAULT );   
+                    
     //********************************************************************
 		
         //show image
