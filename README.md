@@ -11,18 +11,18 @@ OpenCv lets create a ROI, Region of Interest inside the original image to make t
 -----------------------------------------
 Find ORB point fetaures and descriptors
 
-// OpenCV Image Objects and ROI
+# OpenCV Image Objects and ROI
 
 cv::Mat camSubimage;
 cv::Rect roi;
 
-//clear previous points
+# clear previous points
 point_set.clear(); 
         
-//detect and compute(extract) features
+# detect and compute(extract) features
 orb_detector->detectAndCompute(camSubimage, cv::noArray(), point_set, descriptor_set);
         
-//draw points on the image
+# draw points on the image
 cv::drawKeypoints(camSubimage, point_set, camSubimage, 255, cv::DrawMatchesFlags::DEFAULT ); 
 -----------------------------------------
 
